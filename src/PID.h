@@ -16,6 +16,7 @@ public:
   double Kp;
   double Ki;
   double Kd;
+  double s;
 
   /*
   * Constructor
@@ -41,6 +42,8 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+
+  double getSteerValue(double cte);
 };
 
 #endif /* PID_H */

@@ -33,6 +33,8 @@ int main()
   uWS::Hub h;
 
   PID pid;
+
+  pid.Init(0.01,0.01,0.01);
   // TODO: Initialize the pid variable.
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
@@ -59,7 +61,9 @@ int main()
           */
           
           // DEBUG
-          std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
+
+          steer_value = pid.getSteerValue(cte);
+          std::cout << "speed:\t" << speed << "\tcte:\t" << cte << "\tangle:\t" << angle << "\tsteer\t" << steer_value << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
