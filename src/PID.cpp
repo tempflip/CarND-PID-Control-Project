@@ -12,8 +12,8 @@ PID::PID() {}
 PID::~PID() {}
 
 void PID::Init() {
-	Kp = 0.5;
-	Ki = 0.1;
+	Kp = 0.3;
+	Ki = 0.3;
 	Kd = 0.1;
 	s = 0;
 	prevCte = 0;
@@ -26,6 +26,9 @@ double PID::TotalError() {
 }
 
 double PID::getSteerValue(double cte, double speed) {
+
+	double speedTerm = 1 + speed / 200
+
 	double pTerm = -1 * cte * (Kp);
 	double dTerm = (prevCte - cte) * Kd;
 	
