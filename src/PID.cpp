@@ -93,10 +93,10 @@ double PID::getSteerValue(double cte, double speed) {
 double PID::getThrottle(double cte, double speed) {
 	//cout << cte << "\t\t" << speed << endl;
 
-	if (sqrt(cte * cte) > 0.5) return 0.5;
-	if (sqrt(cte * cte) > 1) return 0.3;
+	if (sqrt(cte * cte) > 0.5) return 0.2;
+	if (sqrt(cte * cte) > 1) return 0.1;
 	if (sqrt(cte * cte) > 2) return 0;
-	return 0.8;
+	return 0.4;
 }
 
 
